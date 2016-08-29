@@ -1,0 +1,8 @@
+{
+  "HOME":          "Home",
+  "ABOUT":         "Impressum",
+  "ABOUT_TEXT":    "Gratulation! Du bist zu einer anderen Seite navigiert!",
+  "WELCOME":       "Willkommen!",
+  "WELCOME_TEXT":  "Dies ist eine einfache Angular-Webapplikation, die ein paar Funktionalitäten und Konzepte aufzeigt!",
+  "LANGUAGE":      "Sprache"
+}
