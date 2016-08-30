@@ -3,22 +3,19 @@ import { TranslateService } from 'ng2-translate/ng2-translate';
 
 @Component({
   selector: 'app',
-  pipes: [],
-  providers: [],
-  directives: [],
   encapsulation: ViewEncapsulation.None,
-  templateUrl: './app.template.html',
-  styles: [require('./app.style.scss')]
+  templateUrl: './app.component.html',
+  styles: [require('./app.component.scss')]
 })
-export class App {
+export class AppComponent {
 
   constructor(
     private translate: TranslateService
   ) {
-    this.setLang();
+    this.initializeLanguage();
   }
 
-  setLang() {
+  initializeLanguage() {
     var userLang = navigator.language.split('-')[0];
     userLang = /(de|en)/gi.test(userLang) ? userLang : 'en';
     this.translate.setDefaultLang('en');

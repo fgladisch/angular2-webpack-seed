@@ -6,26 +6,26 @@ import { FormsModule } from '@angular/forms';
 import { TranslateModule } from 'ng2-translate/ng2-translate';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
-import { App } from './app.component';
-import { Routes } from './app.routes';
-import { Home } from './home';
-import { About } from './about';
-import { Navigation } from './navigation';
+import { AppComponent } from './app.component';
+import { AppRoutes } from './app.routes';
+import { HomeComponent } from './home';
+import { AboutComponent } from './about';
+import { NavigationComponent } from './navigation';
 
 @NgModule({
-  bootstrap: [App],
+  bootstrap: [AppComponent],
   declarations: [
-    App,
-    Navigation,
-    Home,
-    About
+    AppComponent,
+    NavigationComponent,
+    HomeComponent,
+    AboutComponent
   ],
   imports: [
     HttpModule,
     FormsModule,
     BrowserModule,
     TranslateModule.forRoot(),
-    RouterModule.forRoot(Routes)
+    RouterModule.forRoot(AppRoutes)
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }

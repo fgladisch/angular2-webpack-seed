@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'home',
-  pipes: [],
-  providers: [],
-  directives: [],
-  templateUrl: './home.template.html',
-  styles: [require('./home.style.scss')]
+  selector: 'seed-home',
+  templateUrl: './home.component.html',
+  styles: [require('./home.component.scss')]
 })
-export class Home { }
+export class HomeComponent { }

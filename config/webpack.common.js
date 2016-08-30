@@ -2,6 +2,7 @@ var webpack           = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+
 var helpers           = require('./helpers');
 
 module.exports = {
@@ -11,10 +12,10 @@ module.exports = {
   },
 
   entry: {
-    'polyfills': './src/polyfills.browser.ts',
-    'vendor': './src/vendor.browser.ts',
+    'polyfills': './src/polyfills.ts',
+    'vendor': './src/vendor.ts',
     'app': [
-      './src/main.browser.ts',
+      './src/main.ts',
       './src/assets/styles/main.scss'
     ]
   },
