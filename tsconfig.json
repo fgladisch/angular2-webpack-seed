@@ -10,8 +10,6 @@
     "noEmitHelpers": true,
     "strictNullChecks": false,
     "baseUrl": "./src",
-    "paths": [
-    ],
     "lib": [
       "dom",
       "es6"
