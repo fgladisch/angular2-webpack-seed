@@ -71,7 +71,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
-      favicon: 'src/assets/images/favicon.ico'
+      favicon: 'src/favicon.ico'
     }),
     // Copies all i18n files into dist/i18n
     new CopyWebpackPlugin([{
