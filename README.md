@@ -1,10 +1,11 @@
 # angular2-webpack-seed
 
-This is an Angular 2 seed project featuring [webpack](https://webpack.github.io) and [Karma](https://karma-runner.github.io).
-
-Also included:
+This is a minimalistic Angular 2 seed project, featuring:
+* [webpack](https://webpack.github.io)
+* [Karma](https://karma-runner.github.io)
 * [ng2-translate](https://github.com/ocombe/ng2-translate)
 * [Bootstrap (Sass)](http://getbootstrap.com)
+* [@types](https://blogs.msdn.microsoft.com/typescript/2016/06/15/the-future-of-declaration-files)
 
 This seed follows the [Angular 2 Style Guide](https://angular.io/docs/ts/latest/guide/style-guide.html).
 
@@ -27,6 +28,8 @@ npm start
 ### Run tests
 
 The following command will run your unit tests with [Karma](https://karma-runner.github.io).
+
+A coverage report is found in "./coverage".
 
 ```bash
 npm test

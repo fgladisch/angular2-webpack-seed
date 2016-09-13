@@ -1,5 +1,21 @@
-/node_modules/
-/dist/
-/typings/
-/coverage/
-/npm-debug.log
+# Build folder
+/dist
+
+# TypeScript
+/src/**/*.js
+/src/**/*.js.map
+
+# Coverage report folder
+/coverage
+
+# Node files
+/node_modules
+npm-debug.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.idea/
+*.swp
