@@ -31,7 +31,7 @@ npm start
 
 The following command will run your unit tests with [Karma](https://karma-runner.github.io).
 
-A coverage report is found in "./coverage".
+A coverage report is found in "coverage".
 
 ```bash
 npm test
@@ -39,7 +39,7 @@ npm test
 
 ### Build for production
 
-Production files are found in "./dist".
+Production files are located in "dist".
 
 ```bash
 npm run build
