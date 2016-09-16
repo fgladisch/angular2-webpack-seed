@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+
 var helpers = require('./helpers');
 
 var ENV = process.env.ENV = process.env.NODE_ENV = 'test';
@@ -31,7 +32,8 @@ module.exports = {
     ],
 
     // See webpack.common.js for more explanation about loaders
-    loaders: [{
+    loaders: [
+      {
         test: /\.ts$/,
         loader: 'awesome-typescript-loader',
         query: {
@@ -41,7 +43,8 @@ module.exports = {
             removeComments: true
 
           }
-        }
+        },
+        exclude: [/\.e2e\.ts$/]
       }, {
         test: /\.json$/,
         loader: 'json-loader'
@@ -52,7 +55,6 @@ module.exports = {
         test: /\.html$/,
         loader: 'raw-loader'
       }
-
     ],
 
     postLoaders: [
