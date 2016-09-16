@@ -4,7 +4,7 @@ import { TranslateService } from 'ng2-translate/ng2-translate';
 @Component({
   selector: 'seed-navigation',
   templateUrl: './navigation.component.html',
-  styles: [require('./navigation.component.scss')]
+  styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent {
 

@@ -1,9 +1,10 @@
-import { Routes } from '@angular/router';
+import { ModuleWithProviders } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 
-export const AppRoutes: Routes = [
+export const appRoutes: Routes = [
   // #/ -> #/home
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   // #/home
@@ -13,3 +14,5 @@ export const AppRoutes: Routes = [
   // #/xyz -> #/home
   { path: '**', redirectTo: 'home' }
 ];
+
+export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

@@ -7,7 +7,7 @@ import { TranslateModule } from 'ng2-translate/ng2-translate';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { AppComponent } from './app.component';
-import { AppRoutes } from './app.routes';
+import { routing } from './app.routing';
 import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 import { NavigationComponent } from './navigation';
@@ -21,14 +21,11 @@ import { NavigationComponent } from './navigation';
     AboutComponent
   ],
   imports: [
+    routing,
     HttpModule,
     FormsModule,
     BrowserModule,
-    TranslateModule.forRoot(),
-    RouterModule.forRoot(AppRoutes)
-  ],
-  providers: [
-    { provide: LocationStrategy, useClass: HashLocationStrategy }
+    TranslateModule.forRoot()
   ]
 })
 export class AppModule { }

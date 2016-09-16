@@ -5,7 +5,7 @@ import { TranslateService } from 'ng2-translate/ng2-translate';
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
   templateUrl: './app.component.html',
-  styles: [require('./app.component.scss')]
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
 
