@@ -5,9 +5,12 @@
 This is a minimalistic Angular 2 seed project, featuring:
 * [webpack](https://webpack.github.io)
 * [Karma](https://karma-runner.github.io)
-* [ng2-translate](https://github.com/ocombe/ng2-translate)
-* [Bootstrap (Sass)](http://getbootstrap.com)
+* [Jasmine](http://jasmine.github.io)
+* [TypeScript](https://www.typescriptlang.org)
 * [@types](https://blogs.msdn.microsoft.com/typescript/2016/06/15/the-future-of-declaration-files)
+* [ng2-translate](https://github.com/ocombe/ng2-translate)
+* [Sass](http://sass-lang.com)
+* [Bootstrap (Sass)](https://github.com/twbs/bootstrap-sass)
 
 This seed follows the [Angular 2 Style Guide](https://angular.io/docs/ts/latest/guide/style-guide.html).
 
