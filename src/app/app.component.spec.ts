@@ -22,13 +22,15 @@ describe('AppComponent', () => {
   });
 
   it('should initialize the language',
-    inject([AppComponent, TranslateService], (app, translate) => {
-      spyOn(translate, 'use');
-      spyOn(translate, 'setDefaultLang');
-      app.initializeLanguage();
-      expect(translate.use).toHaveBeenCalled();
-      expect(translate.setDefaultLang).toHaveBeenCalledWith('en');
-    })
+    inject([AppComponent, TranslateService],
+      (app: AppComponent, translate: TranslateService) => {
+        spyOn(translate, 'use');
+        spyOn(translate, 'setDefaultLang');
+        app.initializeLanguage();
+        expect(translate.use).toHaveBeenCalled();
+        expect(translate.setDefaultLang).toHaveBeenCalledWith('en');
+      }
+    )
   );
 
 });

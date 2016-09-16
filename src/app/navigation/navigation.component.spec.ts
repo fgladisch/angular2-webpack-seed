@@ -21,11 +21,13 @@ describe('NavigationComponent', () => {
   });
 
   it('should set the language to "de"',
-    inject([NavigationComponent, TranslateService], (navigation, translate) => {
-      spyOn(translate, 'use');
-      navigation.setLanguage('de');
-      expect(translate.use).toHaveBeenCalledWith('de');
-    })
+    inject([NavigationComponent, TranslateService],
+      (navigation: NavigationComponent, translate: TranslateService) => {
+        spyOn(translate, 'use');
+        navigation.setLanguage('de');
+        expect(translate.use).toHaveBeenCalledWith('de');
+      }
+    )
   );
 
 });
