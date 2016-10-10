@@ -1,6 +1,6 @@
 # angular2-webpack-seed
 
-[![Build Status](https://travis-ci.org/fgladisch/angular2-webpack-seed.svg?branch=master)](https://travis-ci.org/fgladisch/angular2-webpack-seed) [![Dependencies](https://david-dm.org/fgladisch/angular2-webpack-seed.svg)](https://david-dm.org/fgladisch/angular2-webpack-seed.svg)
+[![Build Status](https://travis-ci.org/fgladisch/angular2-webpack-seed.svg?branch=master)](https://travis-ci.org/fgladisch/angular2-webpack-seed)
 
 This is a minimalistic Angular 2 seed project, featuring:
 * [webpack](https://webpack.github.io)
