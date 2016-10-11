@@ -1,9 +1,8 @@
 # Build folder
 /dist
 
-# TypeScript
-/src/**/*.js
-/src/**/*.js.map
+# TypeScript output folder
+/temp
 
 # Coverage report folder
 /coverage
