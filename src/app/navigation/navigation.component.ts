@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { TranslateService } from 'ng2-translate/ng2-translate';
 
+class LanguageItem {
+  key: string;
+  name: string;
+}
+
 @Component({
   selector: 'seed-navigation',
   templateUrl: './navigation.component.html',
@@ -8,9 +13,19 @@ import { TranslateService } from 'ng2-translate/ng2-translate';
 })
 export class NavigationComponent {
 
-  constructor(
-    private translate: TranslateService
-  ) { }
+  isCollapsed: boolean = true;
+
+  languages: LanguageItem[] = [
+    {
+      key: 'de',
+      name: 'Deutsch'
+    }, {
+      key: 'en',
+      name: 'English'
+    }
+  ];
+
+  constructor(private translate: TranslateService) { }
 
   setLanguage(lang: string) {
     this.translate.use(lang);

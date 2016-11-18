@@ -4,9 +4,6 @@
 # TypeScript output folder
 /temp
 
-# Coverage report folder
-/coverage
-
 # Node files
 /node_modules
 npm-debug.log
@@ -16,5 +13,6 @@ npm-debug.log
 Thumbs.db
 
 # IDE files
+.vscode/
 .idea/
 *.swp

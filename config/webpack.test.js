@@ -1,84 +1,69 @@
+var path = require('path');
 var webpack = require('webpack');
-
+var ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 var helpers = require('./helpers');
 
 var ENV = process.env.ENV = process.env.NODE_ENV = 'test';
 
 module.exports = {
 
-  // Source map for Karma from the help of karma-sourcemap-loader & karma-webpack
-  devtool: 'inline-source-map',
+    // Source map for Karma from the help of karma-sourcemap-loader & karma-webpack
+    devtool: 'inline-source-map',
 
-  resolve: {
-    extensions: ['', '.ts', '.js'],
-    root: helpers.root('src')
-  },
+    resolve: {
+      extensions: ['.ts', '.js'],
+      modules: [
+        path.resolve(__dirname, 'src'),
+        'node_modules'
+      ]
+    },
 
-  module: {
-
-    preLoaders: [
-
-      // Extracts SourceMaps for source files that as added as sourceMappingURL comment
-      {
-        test: /\.js$/,
-        loader: 'source-map-loader',
-        exclude: [
-          // These packages have problems with their sourcemaps
-          helpers.root('node_modules/rxjs'),
-          helpers.root('node_modules/@angular')
-        ]
-      }
-
-    ],
-
-    // See webpack.common.js for more explanation about loaders
-    loaders: [
-      {
-        test: /\.ts$/,
-        loader: 'awesome-typescript-loader',
-        query: {
-          compilerOptions: {
-
-            // Remove TypeScript helpers to be injected below by DefinePlugin
-            removeComments: true
-
-          }
+    module: {
+      // See webpack.common.js for more explanation about rules
+      rules: [
+        // Extracts SourceMaps for source files that as added as sourceMappingURL comment
+        {
+          enforce: 'pre',
+          test: /\.js$/,
+          loader: 'source-map-loader',
+          exclude: [
+            // These packages have problems with their sourcemaps
+            helpers.root('node_modules/rxjs'),
+            helpers.root('node_modules/@angular'),
+            helpers.root('node_modules/@ng-bootstrap'),
+            helpers.root('node_modules/ng2-translate')
+          ]
         },
-        exclude: [/\.e2e\.ts$/]
-      }, {
-        test: /\.json$/,
-        loader: 'json-loader'
-      }, {
-        test: /\.scss$/,
-        loaders: ['raw-loader', 'sass-loader']
-      }, {
-        test: /\.html$/,
-        loader: 'raw-loader'
-      }
-    ],
+        {
+          test: /\.ts$/,
+          loaders: ['awesome-typescript-loader', 'angular2-template-loader']
+        },
+        {
+          test: /\.json$/,
+          loader: 'json-loader'
+        },
+        {
+          test: /\.scss$/,
+          loaders: ['raw-loader', 'sass-loader']
+        },
+        {
+          test: /\.html$/,
+          loader: 'raw-loader'
+        }
+      ]
+    },
 
-    postLoaders: [
-
-      // Instruments JS files with Istanbul for subsequent code coverage reporting
-      {
-        test: /\.(js|ts)$/,
-        loader: 'istanbul-instrumenter-loader',
-        include: helpers.root('src'),
-        exclude: [
-          /\.spec\.ts$/,
-          /node_modules/
-        ]
-      }
-
+    // See webpack.common.js for more explanation about plugins
+    plugins: [
+      new ContextReplacementPlugin(
+        /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+        helpers.root('src')
+      ),
+      new webpack.DefinePlugin({
+        'process.env': {
+          'ENV': JSON.stringify(ENV)
+        }
+      })
     ]
-  },
-
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        'ENV': JSON.stringify(ENV)
-      }
-    })
-  ]
 
 };

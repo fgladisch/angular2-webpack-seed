@@ -12,10 +12,10 @@ module.exports = function(config) {
      *
      * available frameworks: https://npmjs.org/browse/keyword/karma-adapter
      */
-    frameworks: ['jasmine'],
+    frameworks: [ 'jasmine' ],
 
     // list of files to exclude
-    exclude: [],
+    exclude: [ ],
 
     /*
      * list of files / patterns to load in the browser
@@ -32,27 +32,14 @@ module.exports = function(config) {
      * available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
      */
     preprocessors: {
-      './config/karma-shim.js': ['coverage', 'webpack', 'sourcemap']
+      './config/karma-shim.js': [ 'webpack', 'sourcemap' ]
     },
 
     // Webpack Config at ./webpack.test.js
     webpack: testWebpackConfig,
 
-    coverageReporter: {
-      dir: 'coverage/',
-      reporters: [{
-        type: 'text-summary'
-      }, {
-        type: 'json'
-      }, {
-        type: 'html'
-      }]
-    },
-
     // Webpack please don't spam the console when running in karma!
-    webpackServer: {
-      noInfo: true
-    },
+    webpackMiddleware: { stats: 'errors-only' },
 
     /*
      * test results reporter to use
@@ -60,7 +47,7 @@ module.exports = function(config) {
      * possible values: 'dots', 'progress'
      * available reporters: https://npmjs.org/browse/keyword/karma-reporter
      */
-    reporters: ['progress', 'coverage'],
+    reporters: [ 'mocha' ],
 
     // web server port
     port: 9876,
@@ -81,9 +68,7 @@ module.exports = function(config) {
      * start these browsers
      * available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
      */
-    browsers: [
-      'PhantomJS'
-    ],
+    browsers: [ 'PhantomJS' ],
 
     /*
      * Continuous Integration mode

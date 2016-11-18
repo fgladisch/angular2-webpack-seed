@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 describe('AppComponent', () => {
 
   class MockTranslateService {
+    getBrowserLang(): string { return 'en'; }
     setDefaultLang(lang: string) { }
     use(lang: string) { }
   }

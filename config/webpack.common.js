@@ -1,27 +1,29 @@
-var webpack           = require('webpack');
+var webpack = require('webpack');
+var ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
-
-var helpers           = require('./helpers');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var helpers = require('./helpers');
 
 module.exports = {
 
   resolve: {
-    extensions: ['', '.js', '.ts']
+    // Array of extensions that will be used to resolve modules
+    extensions: ['.js', '.ts']
   },
 
+  // Entry points the bundles
   entry: {
-    'polyfills': './src/polyfills.ts',
-    'vendor': './src/vendor.ts',
+    'polyfills': helpers.root('src', 'polyfills.ts'),
+    'vendor': helpers.root('src', 'vendor.ts'),
     'app': [
-      './src/main.ts',
-      './src/assets/styles/main.scss'
+      helpers.root('src', 'main.ts'),
+      helpers.root('src', 'assets', 'styles', 'main.scss')
     ]
   },
 
   module: {
-    loaders: [
+    rules: [
       // Compiles all .ts files
       {
         test: /\.ts$/,
@@ -31,12 +33,13 @@ module.exports = {
       // Injects all html templates into their components and loads referenced assets
       {
         test: /\.html$/,
-        loader: 'html-loader'
+        loader: 'html-loader',
+        exclude: helpers.root('src/index.html')
       },
       // Copies all images and fonts into dist/assets
       {
         test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot)$/,
-        loader: 'file?name=assets/[name].[ext]'
+        loader: 'file-loader?name=assets/[name].[ext]'
       },
       // Puts all styles from assets/styles/main.scss in a separate file
       {
@@ -58,30 +61,29 @@ module.exports = {
     ]
   },
 
-  // Needed for bootstrap-sass
-  // https://github.com/twbs/bootstrap-sass/issues/409
-  sassLoader: {
-    precision: 10
-  },
-
   plugins: [
+    // File name for the extracted styles
     new ExtractTextPlugin('[name].css'),
+    // Identifies common modules and puts them into a commons chunk
     new webpack.optimize.CommonsChunkPlugin({
       name: ['app', 'vendor', 'polyfills']
     }),
+    // Provides context to Angular's use of System.import
+    new ContextReplacementPlugin(
+      // The (\\|\/) piece accounts for path separators in *nix and Windows
+      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+      helpers.root('src')
+    ),
+    // Generates an HTML5 file that includes all webpack bundles
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
-      favicon: 'src/favicon.ico'
+      template: helpers.root('src', 'index.html'),
+      favicon: helpers.root('src', 'favicon.ico')
     }),
     // Copies all i18n files into dist/i18n
     new CopyWebpackPlugin([{
-      from: 'src/i18n',
+      from: helpers.root('src', 'i18n'),
       to: 'i18n'
     }]),
-    // Bootstrap doesn't use "$" and needs a global "jQuery"
-    new webpack.ProvidePlugin({
-      jQuery: 'jquery'
-    })
   ]
 
 };

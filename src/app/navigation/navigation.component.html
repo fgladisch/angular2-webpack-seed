@@ -1,40 +1,45 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
+<nav class="navbar navbar-dark bg-inverse navbar-fixed-top">
 
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">
-        <img alt="Logo" src="../../assets/images/logo.png">
-      </a>
-    </div>
+  <button class="navbar-toggler hidden-md-up float-xs-right" type="button" (click)="isCollapsed = !isCollapsed"></button>
 
-    <div class="collapse navbar-collapse">
+  <a class="navbar-brand" [routerLink]="['/']">
+    <img alt="Logo" src="../../assets/images/logo.png">
+  </a>
 
-      <ul class="nav navbar-nav">
-        <li routerLinkActive="active">
-          <a routerLink="home">{{ 'HOME' | translate }}</a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="about">{{ 'ABOUT' | translate }}</a>
-        </li>
-      </ul>
+  <div class="navbar-toggleable-sm" [ngbCollapse]="isCollapsed">
 
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            {{ 'LANGUAGE' | translate }} <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li [class.active]="translate.currentLang == 'de'">
-              <a (click)="setLanguage('de')">Deutsch</a>
-            </li>
-            <li [class.active]="translate.currentLang == 'en'">
-              <a (click)="setLanguage('en')">English</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
+    <ul class="nav navbar-nav">
 
-    </div>
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['/home']">{{ 'HOME' | translate }}</a>
+      </li>
+
+      <li class="nav-item" [routerLinkActive]="['active']">
+        <a class="nav-link" [routerLink]="['/about']">{{ 'ABOUT' | translate }}</a>
+      </li>
+
+    </ul>
+
+    <ul class="nav navbar-nav float-md-right">
+
+      <li ngbDropdown class="nav-item dropdown">
+
+        <a ngbDropdownToggle id="languageDropdown" class="nav-link dropdown-toggle">
+          <span class="hidden-md-down">{{ 'LANGUAGE' | translate }}</span>
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="languageDropdown">
+          <button *ngFor="let language of languages"
+                  type="button"
+                  class="dropdown-item"
+                  [class.active]="translate.currentLang == language.key"
+                  (click)="setLanguage(language.key)">{{ language.name }}</button>
+        </ul>
+
+      </li>
+
+    </ul>
 
   </div>
+
 </nav>
