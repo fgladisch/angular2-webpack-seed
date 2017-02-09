@@ -1,33 +1,54 @@
-import { TestBed, inject } from '@angular/core/testing';
-import { TranslateService } from 'ng2-translate/ng2-translate';
+import { TestBed, inject, ComponentFixture } from '@angular/core/testing';
+import { TranslateModule, TranslateService } from 'ng2-translate/ng2-translate';
+import { BrowserModule }  from '@angular/platform-browser';
+import { APP_BASE_HREF } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // Load the implementations that should be tested
 import { AppComponent } from './app.component';
+import { NavigationComponent } from './navigation';
+
+class MockTranslateService {
+  getBrowserLang(): string { return 'en'; }
+  setDefaultLang(lang: string) { }
+  use(lang: string) { }
+}
 
 describe('AppComponent', () => {
 
-  class MockTranslateService {
-    getBrowserLang(): string { return 'en'; }
-    setDefaultLang(lang: string) { }
-    use(lang: string) { }
-  }
+  let fixture: ComponentFixture<AppComponent>;
+  let component: AppComponent;
 
   // Provide our implementations or mocks to the dependency injector
   beforeEach(() => {
     TestBed.configureTestingModule({
+      declarations: [
+        AppComponent,
+        NavigationComponent
+      ],
+      imports: [
+        BrowserModule,
+        TranslateModule,
+        NgbModule.forRoot(),
+        RouterModule.forRoot([])
+      ],
       providers: [
         { provide: TranslateService, useClass: MockTranslateService },
+        { provide: APP_BASE_HREF, useValue: '/' },
         AppComponent
       ]
-    })
+    });
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
   });
 
   it('should initialize the language',
-    inject([AppComponent, TranslateService],
-      (app: AppComponent, translate: TranslateService) => {
+    inject([TranslateService],
+      (translate: TranslateService) => {
         spyOn(translate, 'use');
         spyOn(translate, 'setDefaultLang');
-        app.initializeLanguage();
+        component.initializeLanguage();
         expect(translate.use).toHaveBeenCalled();
         expect(translate.setDefaultLang).toHaveBeenCalledWith('en');
       }
