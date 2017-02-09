@@ -1,12 +1,12 @@
-var webpack = require('webpack');
-var webpackMerge = require('webpack-merge');
-var UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
-var commonConfig = require('./webpack.common.js');
-var helpers = require('./helpers');
+const webpack = require('webpack');
+const webpackMerge = require('webpack-merge');
+const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
+const commonConfig = require('./webpack.common.js');
+const helpers = require('./helpers');
 
-var ENV = process.env.NODE_ENV = process.env.ENV = 'production';
+const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 
-module.exports = webpackMerge(commonConfig, {
+module.exports = webpackMerge(commonConfig(), {
 
   output: {
     path: helpers.root('dist'),
