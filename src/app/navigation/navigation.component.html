@@ -1,14 +1,16 @@
-<nav class="navbar navbar-dark bg-inverse navbar-fixed-top">
+<nav class="navbar navbar-inverse bg-inverse navbar-fixed-top navbar-toggleable-sm">
 
-  <button class="navbar-toggler hidden-md-up float-xs-right" type="button" (click)="isCollapsed = !isCollapsed"></button>
+  <button class="navbar-toggler navbar-toggler-right" type="button" (click)="isCollapsed = !isCollapsed">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
   <a class="navbar-brand" [routerLink]="['/']">
     <img alt="Logo" src="../../assets/images/logo.png">
   </a>
 
-  <div class="navbar-toggleable-sm" [ngbCollapse]="isCollapsed">
+  <div class="collapse navbar-collapse" [ngbCollapse]="isCollapsed">
 
-    <ul class="nav navbar-nav">
+    <ul class="navbar-nav mr-auto">
 
       <li class="nav-item" [routerLinkActive]="['active']">
         <a class="nav-link" [routerLink]="['/home']">{{ 'HOME' | translate }}</a>
@@ -20,12 +22,12 @@
 
     </ul>
 
-    <ul class="nav navbar-nav float-md-right">
+    <ul class="navbar-nav">
 
       <li ngbDropdown class="nav-item dropdown">
 
         <a ngbDropdownToggle id="languageDropdown" class="nav-link dropdown-toggle">
-          <span class="hidden-md-down">{{ 'LANGUAGE' | translate }}</span>
+          <span>{{ 'LANGUAGE' | translate }}</span>
           <span class="caret"></span>
         </a>
         <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="languageDropdown">

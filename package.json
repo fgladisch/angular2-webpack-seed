@@ -1,6 +1,6 @@
 {
   "name": "angular2-webpack-seed",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "scripts": {
     "start": "webpack-dev-server --inline --progress --port 3000",
     "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail",
@@ -31,7 +31,7 @@
     "@angular/platform-browser-dynamic": "2.4.7",
     "@angular/router": "3.4.7",
     "@ng-bootstrap/ng-bootstrap": "1.0.0-alpha.20",
-    "bootstrap": "4.0.0-alpha.5",
+    "bootstrap": "4.0.0-alpha.6",
     "core-js": "2.4.1",
     "ie-shim": "0.1.0",
     "ng2-translate": "5.0.0",

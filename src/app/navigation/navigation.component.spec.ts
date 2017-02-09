@@ -4,7 +4,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule, APP_BASE_HREF } from '@angular/common';
 
 // Load the implementations that should be tested
-import { NavigationComponent } from './';
+import { NavigationComponent } from './navigation.component';
 import { RouterModule } from '@angular/router';
 
 class MockTranslateService {

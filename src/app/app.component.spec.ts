@@ -5,9 +5,10 @@ import { APP_BASE_HREF } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { NavigationComponent } from './navigation';
+
 // Load the implementations that should be tested
 import { AppComponent } from './app.component';
-import { NavigationComponent } from './navigation';
 
 class MockTranslateService {
   getBrowserLang(): string { return 'en'; }
