@@ -5,13 +5,13 @@ import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 
 export const appRoutes: Routes = [
-  // #/ -> #/home
+  // "/" -> "/home"
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  // #/home
+  // "/home"
   { path: 'home', component: HomeComponent },
-  // #/about
+  // "/about"
   { path: 'about', component: AboutComponent },
-  // #/xyz -> #/home
+  // "/xyz" -> "/home"
   { path: '**', redirectTo: 'home' }
 ];
 
