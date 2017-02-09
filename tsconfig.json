@@ -24,10 +24,6 @@
     "node_modules",
     "dist"
   ],
-  "awesomeTypescriptLoaderOptions": {
-    "forkChecker": true,
-    "useWebpackText": true
-  },
   "atom": {
     "rewriteTsconfig": false
   }
