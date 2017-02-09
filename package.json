@@ -39,10 +39,10 @@
     "zone.js": "0.7.6"
   },
   "devDependencies": {
-    "@types/core-js": "^0.9.34",
-    "@types/jasmine": "^2.5.38",
-    "@types/node": "^6.0.48",
-    "angular2-template-loader": "0.6.1",
+    "@types/core-js": "0.9.35",
+    "@types/jasmine": "2.5.41",
+    "@types/node": "7.0.5",
+    "angular2-template-loader": "0.6.2",
     "awesome-typescript-loader": "3.0.3",
     "copy-webpack-plugin": "4.0.1",
     "css-loader": "0.26.1",
@@ -61,7 +61,7 @@
     "node-sass": "4.5.0",
     "raw-loader": "0.5.1",
     "rimraf": "2.5.4",
-    "sass-loader": "4.1.1",
+    "sass-loader": "5.0.1",
     "source-map-loader": "0.1.6",
     "ts-helpers": "1.1.2",
     "typescript": "2.1.6",
