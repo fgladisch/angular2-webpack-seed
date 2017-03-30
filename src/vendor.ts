@@ -15,5 +15,6 @@ import 'rxjs/Rx';
 
 
 // Import additional vendors here
-import 'ng2-translate';
+import '@ngx-translate/core';
+import '@ngx-translate/http-loader';
 import '@ng-bootstrap/ng-bootstrap';

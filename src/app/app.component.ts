@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { TranslateService } from 'ng2-translate/ng2-translate';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app',
@@ -14,7 +14,7 @@ export class AppComponent {
   }
 
   initializeLanguage() {
-    let browserLang: string = this.translate.getBrowserLang();
+    const browserLang: string = this.translate.getBrowserLang();
     this.translate.setDefaultLang('en');
     this.translate.use(browserLang);
   }

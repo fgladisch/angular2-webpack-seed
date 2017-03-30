@@ -1,5 +1,5 @@
 import { TestBed, inject, ComponentFixture } from '@angular/core/testing';
-import { TranslateModule, TranslateService } from 'ng2-translate/ng2-translate';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule, APP_BASE_HREF } from '@angular/common';
 

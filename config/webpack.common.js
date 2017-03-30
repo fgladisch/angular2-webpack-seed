@@ -10,8 +10,11 @@ module.exports = function() {
   return {
 
     resolve: {
-      // Array of extensions that will be used to resolve modules
-      extensions: ['.js', '.ts']
+      extensions: ['.ts', '.js', '.json'],
+      modules: [
+        helpers.root('src'),
+        helpers.root('node_modules')
+      ],
     },
 
     // Entry points the bundles
@@ -71,9 +74,9 @@ module.exports = function() {
         name: ['app', 'vendor', 'polyfills']
       }),
       // Provides context to Angular's use of System.import
+      // See: https://github.com/AngularClass/angular2-webpack-starter/issues/993#issuecomment-283423040
       new ContextReplacementPlugin(
-        // The (\\|\/) piece accounts for path separators in *nix and Windows
-        /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+        /angular(\\|\/)core(\\|\/)@angular/,
         helpers.root('src')
       ),
       // Generates an HTML5 file that includes all webpack bundles

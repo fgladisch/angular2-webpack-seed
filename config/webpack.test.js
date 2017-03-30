@@ -11,29 +11,17 @@ module.exports = {
   devtool: 'inline-source-map',
 
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '.js', '.json'],
     modules: [
-      path.resolve(__dirname, 'src'),
-      'node_modules'
-    ]
+      helpers.root('src'),
+      helpers.root('node_modules')
+    ],
   },
 
   module: {
+    exprContextCritical: false,
     // See webpack.common.js for more explanation about rules
     rules: [
-      // Extracts SourceMaps for source files that as added as sourceMappingURL comment
-      {
-        enforce: 'pre',
-        test: /\.js$/,
-        loader: 'source-map-loader',
-        exclude: [
-          // These packages have problems with their sourcemaps
-          helpers.root('node_modules/rxjs'),
-          helpers.root('node_modules/@angular'),
-          helpers.root('node_modules/@ng-bootstrap'),
-          helpers.root('node_modules/ng2-translate')
-        ]
-      },
       {
         test: /\.ts$/,
         loaders: ['awesome-typescript-loader?silent=true', 'angular2-template-loader']
@@ -55,8 +43,9 @@ module.exports = {
 
   // See webpack.common.js for more explanation about plugins
   plugins: [
+    // Provides context to Angular's use of System.import
     new ContextReplacementPlugin(
-      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+      /angular(\\|\/)core(\\|\/)@angular/,
       helpers.root('src')
     ),
     new webpack.DefinePlugin({

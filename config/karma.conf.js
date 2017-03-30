@@ -7,6 +7,15 @@ module.exports = function (config) {
     // base path that will be used to resolve all patterns (e.g. files, exclude)
     basePath: '',
 
+    // Karma will require() these plugins
+    plugins: [
+      "karma-jasmine",
+      "karma-mocha-reporter",
+      "karma-phantomjs-launcher",
+      "karma-sourcemap-loader",
+      "karma-webpack"
+    ],
+
     /*
      * Frameworks to use
      *
