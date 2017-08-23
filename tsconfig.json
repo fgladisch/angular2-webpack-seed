@@ -24,7 +24,7 @@
     "node_modules",
     "dist",
     "aot",
-    "src/main-aot.ts"
+    "/src/main-aot.ts"
   ],
   "atom": {
     "rewriteTsconfig": false
