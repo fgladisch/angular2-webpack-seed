@@ -22,7 +22,9 @@
   "buildOnSave": false,
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    "aot",
+    "src/main-aot.ts"
   ],
   "atom": {
     "rewriteTsconfig": false

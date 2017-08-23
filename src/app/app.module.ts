@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule }  from '@angular/platform-browser';
-import { HttpModule, Http } from '@angular/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -12,6 +12,10 @@ import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 import { NavigationComponent } from './navigation';
 
+export function translateLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './i18n/', '.json');
+}
+
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
@@ -22,16 +26,14 @@ import { NavigationComponent } from './navigation';
   ],
   imports: [
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     FormsModule,
     NgbModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
+        deps: [HttpClient],
         provide: TranslateLoader,
-        useFactory: (http: Http) => {
-          return new TranslateHttpLoader(http, './i18n/', '.json');
-        },
-        deps: [Http]
+        useFactory: translateLoaderFactory
       }
     }),
     routing

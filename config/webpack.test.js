@@ -1,9 +1,8 @@
-const path = require('path');
-const webpack = require('webpack');
-const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
-const helpers = require('./helpers');
+const webpack = require('webpack')
+const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin')
+const helpers = require('./helpers')
 
-const ENV = process.env.ENV = process.env.NODE_ENV = 'test';
+const ENV = process.env.ENV = process.env.NODE_ENV = 'test'
 
 module.exports = {
 
@@ -43,7 +42,6 @@ module.exports = {
 
   // See webpack.common.js for more explanation about plugins
   plugins: [
-    // Provides context to Angular's use of System.import
     new ContextReplacementPlugin(
       /angular(\\|\/)core(\\|\/)@angular/,
       helpers.root('src')
@@ -59,4 +57,4 @@ module.exports = {
     hints: false
   }
 
-};
+}

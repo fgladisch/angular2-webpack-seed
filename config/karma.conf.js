@@ -9,11 +9,11 @@ module.exports = function (config) {
 
     // Karma will require() these plugins
     plugins: [
-      "karma-jasmine",
-      "karma-mocha-reporter",
-      "karma-phantomjs-launcher",
-      "karma-sourcemap-loader",
-      "karma-webpack"
+      'karma-jasmine',
+      'karma-mocha-reporter',
+      'karma-phantomjs-launcher',
+      'karma-sourcemap-loader',
+      'karma-webpack'
     ],
 
     /*

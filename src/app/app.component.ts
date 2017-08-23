@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app',
+  selector: 'seed-app',
   encapsulation: ViewEncapsulation.None,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
@@ -14,9 +14,9 @@ export class AppComponent {
   }
 
   initializeLanguage() {
-    const browserLang: string = this.translate.getBrowserLang();
+    const lang = this.translate.getBrowserLang();
     this.translate.setDefaultLang('en');
-    this.translate.use(browserLang);
+    this.translate.use(lang);
   }
 
 }

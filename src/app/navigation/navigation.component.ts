@@ -25,7 +25,7 @@ export class NavigationComponent {
     }
   ];
 
-  constructor(private translate: TranslateService) { }
+  constructor(public translate: TranslateService) { }
 
   setLanguage(lang: string) {
     this.translate.use(lang);

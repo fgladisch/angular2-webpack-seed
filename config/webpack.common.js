@@ -1,14 +1,18 @@
-const webpack = require('webpack');
-const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const helpers = require('./helpers');
+const webpack = require('webpack')
+const { AotPlugin } = require('@ngtools/webpack')
+const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const helpers = require('./helpers')
 
-module.exports = function() {
+module.exports = () => {
+
+  const isProd = process.env.ENV === 'production'
 
   return {
 
+    // Array of extensions that will be used to resolve modules
     resolve: {
       extensions: ['.ts', '.js', '.json'],
       modules: [
@@ -17,12 +21,11 @@ module.exports = function() {
       ],
     },
 
-    // Entry points the bundles
+    // The entry point for the bundle
     entry: {
       'polyfills': helpers.root('src', 'polyfills.ts'),
-      'vendor': helpers.root('src', 'vendor.ts'),
       'app': [
-        helpers.root('src', 'main.ts'),
+        helpers.root('src', isProd ? 'main-aot.ts' : 'main-jit.ts'),
         helpers.root('src', 'assets', 'styles', 'main.scss')
       ]
     },
@@ -32,14 +35,14 @@ module.exports = function() {
         // Compiles all .ts files
         {
           test: /\.ts$/,
-          loaders: ['awesome-typescript-loader?silent=true', 'angular2-template-loader'],
+          loaders: isProd ? ['@ngtools/webpack'] : ['awesome-typescript-loader?silent=true', 'angular2-template-loader'],
           exclude: /\.spec\.ts$/
         },
         // Injects all html templates into their components and loads referenced assets
         {
           test: /\.html$/,
           loader: 'html-loader',
-          exclude: helpers.root('src/index.html')
+          exclude: helpers.root('src', 'index.html')
         },
         // Copies all images and fonts into dist/assets
         {
@@ -67,11 +70,15 @@ module.exports = function() {
     },
 
     plugins: [
+      new AotPlugin({
+        tsConfigPath: helpers.root('tsconfig-aot.json'),
+        entryModule: helpers.root('src', 'app', 'app.module#AppModule')
+      }),
       // File name for the extracted styles
-      new ExtractTextPlugin('[name].css'),
+      new ExtractTextPlugin(`[name]${isProd ? '.[hash]' : ''}.css`),
       // Identifies common modules and puts them into a commons chunk
       new webpack.optimize.CommonsChunkPlugin({
-        name: ['app', 'vendor', 'polyfills']
+        name: ['app', 'polyfills']
       }),
       // Provides context to Angular's use of System.import
       // See: https://github.com/AngularClass/angular2-webpack-starter/issues/993#issuecomment-283423040
@@ -79,7 +86,7 @@ module.exports = function() {
         /angular(\\|\/)core(\\|\/)@angular/,
         helpers.root('src')
       ),
-      // Generates an HTML5 file that includes all webpack bundles
+      // Generates a HTML5 file that includes all webpack bundles
       new HtmlWebpackPlugin({
         template: helpers.root('src', 'index.html'),
         favicon: helpers.root('src', 'favicon.ico')
@@ -95,6 +102,6 @@ module.exports = function() {
       hints: false
     }
 
-  };
+  }
 
-};
+}
