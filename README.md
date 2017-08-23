@@ -7,12 +7,12 @@ This is a minimalistic Angular 2+ seed project, featuring:
 * [TypeScript 2.4](https://www.typescriptlang.org)
 * [Bootstrap 4 (Beta)](http://v4-alpha.getbootstrap.com)
 * [Ahead-of-Time Compilation](https://angular.io/guide/aot-compiler)
-* [Tree Shaking](https://webpack.js.org/guides/tree-shaking) • Tiny production files :mouse2:
+* [Tree Shaking](https://webpack.js.org/guides/tree-shaking) and [Compression](https://github.com/webpack-contrib/compression-webpack-plugin) — Tiny production files :mouse2:
 * [Sass](http://sass-lang.com)
 * [ng-bootstrap](https://github.com/ng-bootstrap/ng-bootstrap)
 * [ngx-translate](https://github.com/ngx-translate)
 * [webpack 3](https://webpack.github.io)
-* [@ngtools/webpack](https://www.npmjs.com/package/@ngtools/webpack) • Makes AOT + Sass possible :tada:
+* [@ngtools/webpack](https://www.npmjs.com/package/@ngtools/webpack) — Makes AOT + Sass possible :tada:
 * [Karma](https://karma-runner.github.io)
 * [Jasmine](http://jasmine.github.io)
 * [@types](https://blogs.msdn.microsoft.com/typescript/2016/06/15/the-future-of-declaration-files)
