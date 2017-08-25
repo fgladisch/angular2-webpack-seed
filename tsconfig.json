@@ -21,10 +21,10 @@
   "compileOnSave": false,
   "buildOnSave": false,
   "exclude": [
-    "node_modules",
-    "dist",
-    "aot",
-    "/src/main-aot.ts"
+    "./node_modules",
+    "./dist",
+    "./aot",
+    "./src/main-aot.ts"
   ],
   "atom": {
     "rewriteTsconfig": false
