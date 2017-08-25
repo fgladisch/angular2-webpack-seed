@@ -912,7 +912,7 @@ compressible@~2.0.10:
   dependencies:
     mime-db ">= 1.29.0 < 2"
 
-compression-webpack-plugin@^1.0.0:
+compression-webpack-plugin@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/compression-webpack-plugin/-/compression-webpack-plugin-1.0.0.tgz#5c5eb6afd08ca6a5d66006eeef71da17b01bd676"
   dependencies:

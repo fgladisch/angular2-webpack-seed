@@ -1,6 +1,6 @@
 {
   "name": "angular2-webpack-seed",
-  "version": "1.0.4",
+  "version": "1.1.2",
   "scripts": {
     "start": "webpack-dev-server --inline --progress --port 3000",
     "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail",
