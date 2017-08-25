@@ -1,5 +1,4 @@
 const webpack = require('webpack')
-const { AotPlugin } = require('@ngtools/webpack')
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
@@ -70,10 +69,6 @@ module.exports = () => {
     },
 
     plugins: [
-      new AotPlugin({
-        tsConfigPath: helpers.root('tsconfig-aot.json'),
-        entryModule: helpers.root('src', 'app', 'app.module#AppModule')
-      }),
       // File name for the extracted styles
       new ExtractTextPlugin(`[name]${isProd ? '.[hash]' : ''}.css`),
       // Identifies common modules and puts them into a commons chunk
