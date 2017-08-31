@@ -34,36 +34,42 @@ module.exports = () => {
         // Compiles all .ts files
         {
           test: /\.ts$/,
-          loaders: isProd ? ['@ngtools/webpack'] : ['awesome-typescript-loader?silent=true', 'angular2-template-loader'],
+          use: isProd ? ['@ngtools/webpack'] : ['awesome-typescript-loader?silent=true', 'angular2-template-loader'],
           exclude: /\.spec\.ts$/
         },
         // Injects all html templates into their components and loads referenced assets
         {
           test: /\.html$/,
-          loader: 'html-loader',
+          use: 'html-loader',
           exclude: helpers.root('src', 'index.html')
         },
         // Copies all images and fonts into dist/assets
         {
           test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot)$/,
-          loader: 'file-loader?name=assets/[name].[ext]'
+          use: 'file-loader?name=assets/[name].[ext]'
         },
         // Puts all styles from assets/styles/main.scss in a separate file
         {
           test: /\.scss$/,
-          exclude: helpers.root('src', 'app'),
-          loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
+          use: ExtractTextPlugin.extract(['css-loader', 'sass-loader']),
+          exclude: helpers.root('src', 'app')
         },
         // Injects all angular styles into their components
         {
           test: /\.scss$/,
-          include: helpers.root('src', 'app'),
-          loaders: ['raw-loader', 'sass-loader']
+          use: ['raw-loader', 'sass-loader'],
+          include: helpers.root('src', 'app')
+        },
+        // To string and css loader support for *.css files (from Angular components)
+        {
+          test: /\.css$/,
+          use: ['to-string-loader', 'css-loader'],
+          include: helpers.root('node_modules')
         },
         // Loads all "required" json files into their components
         {
           test: /\.json$/,
-          loader: 'json-loader'
+          use: 'json-loader'
         }
       ]
     },
