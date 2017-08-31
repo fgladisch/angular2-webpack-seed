@@ -4,12 +4,13 @@ node_js:
   - "stable"
 
 addons:
-  chrome: stable
+  apt:
+    packages:
+      - google-chrome-stable
 
-before_install:
-  - export CHROME_BIN=/usr/bin/google-chrome
+# before_install:
+#   - export CHROME_BIN=/usr/bin/google-chrome
 
 script:
-  - ls /usr/bin/google-chrome
   - npm test
   - npm run build
