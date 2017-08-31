@@ -23,19 +23,19 @@ module.exports = {
     rules: [
       {
         test: /\.ts$/,
-        loaders: ['awesome-typescript-loader?silent=true', 'angular2-template-loader']
+        use: ['awesome-typescript-loader?silent=true', 'angular2-template-loader']
       },
       {
         test: /\.json$/,
-        loader: 'json-loader'
+        use: 'json-loader'
       },
       {
         test: /\.scss$/,
-        loaders: ['raw-loader', 'sass-loader']
+        use: ['raw-loader', 'sass-loader']
       },
       {
         test: /\.html$/,
-        loader: 'raw-loader'
+        use: 'raw-loader'
       }
     ]
   },
