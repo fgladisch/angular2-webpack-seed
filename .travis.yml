@@ -7,7 +7,8 @@ addons:
   chrome: stable
 
 before_install:
-  export CHROME_BIN="/usr/bin/google-chrome-stable"
+  - ls /usr/bin/google-chrome
+  - export CHROME_BIN=/usr/bin/google-chrome
 
 script:
   - npm test
